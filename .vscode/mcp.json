@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "ai-malscan-diagnostics": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["tsx", "mcp/aimalscan-server.ts"]
+    }
+  }
+}

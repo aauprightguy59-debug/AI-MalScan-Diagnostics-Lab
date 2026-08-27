@@ -1,0 +1,8 @@
+{
+  "name": "AI-MalScan Diagnostics",
+  "description": "AI-powered malaria diagnostic suite for rural clinics, featuring micro-scan image capture, species-level parasite detection, treatment regimens, and offline-first surveillance sync.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
