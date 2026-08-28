@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Camera, Upload, Sliders, CheckCircle2, User, HelpCircle, RefreshCw } from 'lucide-react';
+import { Camera, Upload, Sliders, CheckCircle2, User, RefreshCw } from 'lucide-react';
 import { SAMPLE_SLIDES, Patient } from '../types';
 
 interface MicroscopeScannerProps {
@@ -28,10 +28,10 @@ export default function MicroscopeScanner({ onScanComplete, isLoading }: Microsc
   const [selectedSlideKey, setSelectedSlideKey] = useState('falciparum');
   const [focusValue, setFocusValue] = useState(10); // 0 to 100. Best focus around 75
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
-  
+
   // Scanning sequence state
   const [isScanning, setIsScanning] = useState(false);
-  const [scanStep, setScanStep] = useState(0); // 0: idle, 1: scanning field 1, 2: field 2, 3: field 3, 4: complete
+  const [scanStep, setScanStep] = useState(0); // 0: idle, 1: field 1, 2: field 2, 3: field 3, 4: complete
   const [scanLogs, setScanLogs] = useState<string[]>([]);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -262,11 +262,11 @@ export default function MicroscopeScanner({ onScanComplete, isLoading }: Microsc
         </div>
       </div>
 
-      {/* Column 2: Microscope Lens Lens Viewer */}
+      {/* Column 2: Microscope Lens Viewer */}
       <div className="lg:col-span-7 flex flex-col items-center justify-center border-t lg:border-t-0 lg:border-l border-slate-800 pt-6 lg:pt-0 lg:pl-6 space-y-6">
         <div className="relative flex flex-col items-center">
           {/* Circular Microscope Aperture */}
-          <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-slate-950 shadow-2xl bg-black flex items-center justify-center">
+          <div className="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full overflow-hidden border-4 border-slate-950 shadow-2xl bg-white flex items-center justify-center">
             {currentImage ? (
               <div 
                 className="w-full h-full relative transition-all duration-300"
