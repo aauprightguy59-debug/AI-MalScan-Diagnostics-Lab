@@ -15,6 +15,7 @@ import SurveillanceDashboard from './components/SurveillanceDashboard';
 import TechnicianLogin from './components/TechnicianLogin';
 import { DiagnosticRecord, Patient, ChiefTechnician } from './types';
 import { Capacitor } from '@capacitor/core';
+import malariaLogo from './public/assets/images/malaria_lab_logo_1783687025061.jpg';
 
 export default function App() {
   const [technician, setTechnician] = useState<ChiefTechnician | null>(null);
@@ -166,7 +167,7 @@ export default function App() {
     } catch (err) {
       console.error('AI diagnosis request failed:', err);
       alert('Clinical Diagnostic Unit error: Failed to connect to AI Classification service.');
-    } finally {
+    } font-mono {
       setIsLoading(false);
     }
   };
@@ -232,10 +233,9 @@ export default function App() {
               <div className="flex items-center space-x-3">
                 <div className="relative h-11 w-11 rounded-xl overflow-hidden shadow-lg shadow-teal-500/15 border border-teal-500/30 shrink-0">
                   <img 
-                    src="/src/assets/images/malaria_lab_logo_1783687025061.jpg" 
+                    src={malariaLogo} 
                     alt="AI-MalScan Malaria Lab Logo" 
                     className="h-full w-full object-cover"
-                    referrerPolicy="no-referrer"
                   />
                 </div>
                 <div>
