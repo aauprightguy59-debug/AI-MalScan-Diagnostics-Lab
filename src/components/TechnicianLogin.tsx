@@ -9,6 +9,7 @@ import {
   Eye, EyeOff, Cpu, UserPlus, BriefcaseBusiness
 } from 'lucide-react';
 import { ChiefTechnician, LabStaffAccount } from '../types';
+import malariaLogo from '../public/assets/images/malaria_lab_logo_1783687025061.jpg';
 
 interface TechnicianLoginProps {
   onLogin: (technician: ChiefTechnician) => void;
@@ -160,7 +161,7 @@ export default function TechnicianLogin({ onLogin }: TechnicianLoginProps) {
     } catch (err) {
       console.error('Lab staff registration failed', err);
       setError('Unable to save the new laboratory staff account to the database.');
-    } finally {
+    } font-mono {
       setIsSubmitting(false);
     }
   };
@@ -172,10 +173,9 @@ export default function TechnicianLogin({ onLogin }: TechnicianLoginProps) {
           <div className="flex items-center space-x-3">
             <div className="relative h-9 w-9 rounded-lg overflow-hidden border border-teal-500/30 shrink-0">
               <img
-                src="/src/assets/images/malaria_lab_logo_1783687025061.jpg"
+                src={malariaLogo}
                 alt="AI-MalScan Malaria Lab Logo"
                 className="h-full w-full object-cover"
-                referrerPolicy="no-referrer"
               />
             </div>
             <div>
@@ -206,8 +206,12 @@ export default function TechnicianLogin({ onLogin }: TechnicianLoginProps) {
               </div>
 
               <div className="flex items-center space-x-3">
-                <div className="relative h-14 w-14 rounded-xl overflow-hidden border border-teal-500/40 shadow-lg shadow-teal-500/20 shrink-0">
-                  <img src="/src/assets/images/malaria_lab_logo_1783687025061.jpg" alt="Malaria Lab Logo" className="h-full w-full object-cover" referrerPolicy="no-referrer" />
+                <div className="relative h-16 w-16 rounded-2xl overflow-hidden shadow-xl shadow-teal-500/20 border border-teal-500/40 shrink-0">
+                  <img
+                    src={malariaLogo}
+                    alt="AI-MalScan Malaria Lab Logo"
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <div>
                   <h2 className="text-xl font-black text-white tracking-tight leading-tight">Laboratory Staff Access Portal</h2>
