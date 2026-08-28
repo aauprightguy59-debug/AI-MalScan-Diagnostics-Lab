@@ -70,7 +70,7 @@ export const SAMPLE_SLIDES: SampleSlide[] = [
     key: 'falciparum',
     name: 'Plasmodium falciparum Smear',
     description: 'Thin blood smear with multiple delicate ring-form trophozoites and double chromatin dots in infected erythrocytes.',
-    imagePath: '/assets/images/falciparum_smear_1783686249385.jpg',
+    imagePath: '/src/public/assets/images/falciparum_smear_1783686249385.jpg',
     expectedResult: {
       parasiteDetected: true,
       species: 'Plasmodium falciparum',
@@ -83,7 +83,7 @@ export const SAMPLE_SLIDES: SampleSlide[] = [
     key: 'vivax',
     name: 'Plasmodium vivax Smear',
     description: 'Thin blood smear with enlarged red blood cells showing ameboid-form trophozoites and subtle Schüffner dots.',
-    imagePath: '/assets/images/vivax_smear_1783686263162.jpg',
+    imagePath: '/src/public/assets/images/vivax_smear_1783686263162.jpg',
     expectedResult: {
       parasiteDetected: true,
       species: 'Plasmodium vivax',
@@ -96,7 +96,7 @@ export const SAMPLE_SLIDES: SampleSlide[] = [
     key: 'malariae',
     name: 'Plasmodium malariae Smear',
     description: 'Thin blood smear exhibiting normal-sized red blood cells with distinctive band-form trophozoites stretching across the cells.',
-    imagePath: '/assets/images/malariae_smear_1783686277652.jpg',
+    imagePath: '/src/public/assets/images/malariae_smear_1783686277652.jpg',
     expectedResult: {
       parasiteDetected: true,
       species: 'Plasmodium malariae',
@@ -109,7 +109,7 @@ export const SAMPLE_SLIDES: SampleSlide[] = [
     key: 'healthy',
     name: 'Normal Healthy Control',
     description: 'Giemsa-stained thin blood smear showcasing healthy red blood cells, a polymorphonuclear white blood cell, and no intracellular inclusions.',
-    imagePath: '/assets/images/normal_smear_1783686291345.jpg',
+    imagePath: '/src/public/assets/images/normal_smear_1783686291345.jpg',
     expectedResult: {
       parasiteDetected: false,
       species: 'None',
