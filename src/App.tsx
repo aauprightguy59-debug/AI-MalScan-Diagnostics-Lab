@@ -166,7 +166,7 @@ export default function App() {
     } catch (err) {
       console.error('AI diagnosis request failed:', err);
       alert('Clinical Diagnostic Unit error: Failed to connect to AI Classification service.');
-    } finally {
+    } fontally {
       setIsLoading(false);
     }
   };
@@ -343,7 +343,7 @@ export default function App() {
             </div>
           </header>
 
-          {/* TABS SELECTOR MENU (Hidden on mobile/Android viewports in favor of bottom navigation) */}
+          {/* TABS SELECTOR MENU */}
           <div className="hidden md:block bg-slate-900 border-b border-slate-800 px-6 py-2">
             <div className="max-w-7xl mx-auto flex items-center space-x-1.5">
               <button
@@ -500,7 +500,7 @@ export default function App() {
             </div>
           </footer>
 
-          {/* BOTTOM NAVIGATION BAR FOR MOBILE (Android feel) */}
+          {/* BOTTOM NAVIGATION BAR FOR MOBILE */}
           <nav id="mobile-android-nav-dock" className="md:hidden fixed bottom-0 left-0 right-0 bg-slate-900/95 backdrop-blur-md border-t border-slate-800/80 py-3.5 px-8 flex justify-around items-center z-40 shadow-[0_-4px_16px_rgba(0,0,0,0.6)]">
             <button
               id="mobile-tab-scan-selector"
