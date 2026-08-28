@@ -170,6 +170,8 @@ export default function App() {
     } finally {
       setIsLoading(false);
     }
+    
+    };
 
   // 4. AUTHORIZE SIGN-OFF ON SCAN REPORT
   const handleAuthorizeRecord = async (authorizedRecord: DiagnosticRecord) => {
