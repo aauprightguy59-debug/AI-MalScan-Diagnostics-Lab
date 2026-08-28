@@ -158,11 +158,11 @@ export default function TechnicianLogin({ onLogin }: TechnicianLoginProps) {
       }
 
       onLogin(technician);
-   } catch (err) {
-      console.error('AI diagnosis request failed:', err);
-      alert('Clinical Diagnostic Unit error: Failed to connect to AI Classification service.');
+    } catch (err) {
+      console.error('Lab staff registration failed', err);
+      setError('Unable to save the new laboratory staff account to the database.');
     } finally {
-      setIsLoading(false);
+      setIsSubmitting(false);
     }
   };
 
