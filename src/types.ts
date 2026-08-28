@@ -57,41 +57,49 @@ export interface SyncStats {
   avgDensity: number;
 }
 
-export const SAMPLE_SLIDES = [
+export interface SampleSlide {
+  key: string;
+  name: string;
+  description: string;
+  imagePath: string;
+  expectedResult: DiagnosticResult;
+}
+
+export const SAMPLE_SLIDES: SampleSlide[] = [
   {
     key: 'falciparum',
     name: 'Plasmodium falciparum Smear',
-    description: 'High parasitemia thin blood smear showing multiple ring-form trophozoites inside red blood cells. Common double-dot chromatin and delicate rings.',
-    imagePath: '/src/assets/images/falciparum_smear_1783686249385.jpg',
+    description: 'Thin blood smear with multiple delicate ring-form trophozoites and double chromatin dots in infected erythrocytes.',
+    imagePath: '/assets/images/falciparum_smear_1783686249385.jpg',
     expectedResult: {
       parasiteDetected: true,
-      species: 'Plasmodium falciparum' as const,
+      species: 'Plasmodium falciparum',
       density: 18500,
       confidenceScore: 0.98,
-      clinicalNotes: 'Characteristic multi-infection ring-form trophozoites observed. Delicate cytoplasm with distinct chromatin dots, typical of Plasmodium falciparum. Estimated density is high, requiring rapid clinical intervention.'
+      clinicalNotes: 'High-density ring forms (trophozoites) observed with characteristic double chromatin dots. High risk of rapid severe malaria progression.'
     }
   },
   {
     key: 'vivax',
     name: 'Plasmodium vivax Smear',
     description: 'Thin blood smear with enlarged red blood cells showing ameboid-form trophozoites and subtle Schüffner dots.',
-    imagePath: '/src/assets/images/vivax_smear_1783686263162.jpg',
+    imagePath: '/assets/images/vivax_smear_1783686263162.jpg',
     expectedResult: {
       parasiteDetected: true,
-      species: 'Plasmodium vivax' as const,
+      species: 'Plasmodium vivax',
       density: 4200,
       confidenceScore: 0.94,
-      clinicalNotes: 'Enlarged infected red blood cells containing irregular, ameboid trophozoites. Fine, eosinophilic stippling (Schüffner\'s dots) is present in the erythrocyte cytoplasm, confirming Plasmodium vivax.'
+      clinicalNotes: "Enlarged infected red blood cells containing irregular, ameboid trophozoites. Fine, eosinophilic stippling (Schüffner's dots) is present in the erythrocyte cytoplasm, confirming Plasmodium vivax."
     }
   },
   {
     key: 'malariae',
     name: 'Plasmodium malariae Smear',
     description: 'Thin blood smear exhibiting normal-sized red blood cells with distinctive band-form trophozoites stretching across the cells.',
-    imagePath: '/src/assets/images/malariae_smear_1783686277652.jpg',
+    imagePath: '/assets/images/malariae_smear_1783686277652.jpg',
     expectedResult: {
       parasiteDetected: true,
-      species: 'Plasmodium malariae' as const,
+      species: 'Plasmodium malariae',
       density: 1200,
       confidenceScore: 0.91,
       clinicalNotes: 'Compact, band-shaped trophozoites stretching across normal-sized, mature erythrocytes. Pigment is dark brown and coarse. Confirmed Plasmodium malariae with typical low-density presentation.'
@@ -101,13 +109,13 @@ export const SAMPLE_SLIDES = [
     key: 'healthy',
     name: 'Normal Healthy Control',
     description: 'Giemsa-stained thin blood smear showcasing healthy red blood cells, a polymorphonuclear white blood cell, and no intracellular inclusions.',
-    imagePath: '/src/assets/images/normal_smear_1783686291345.jpg',
+    imagePath: '/assets/images/normal_smear_1783686291345.jpg',
     expectedResult: {
       parasiteDetected: false,
-      species: 'None' as const,
+      species: 'None',
       density: 0,
       confidenceScore: 0.99,
-      clinicalNotes: 'Erythrocytes exhibit normal morphology, size, and hemoglobinization. No intracellular parasites, ring forms, or Schüffner\'s dots detected. Healthy negative control.'
+      clinicalNotes: "Erythrocytes exhibit normal morphology, size, and hemoglobinization. No intracellular parasites, ring forms, or Schüffner's dots detected. Healthy negative control."
     }
   }
 ];
