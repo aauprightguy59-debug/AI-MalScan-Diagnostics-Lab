@@ -17,15 +17,14 @@ import {
   getAllStaffAccounts,
   getStaffAccountByCredentials,
   createStaffAccount,
-  findStaffAccountByFacilityAndName,
-  seedDefaultStaffAccounts
+  findStaffAccountByFacilityAndName
 } from './db.js';
 
 // Load environment variables
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = Number(process.env.PORT ?? 3000);
 
 // Increase payload limit for base64 microscope scans
 app.use(express.json({ limit: '10mb' }));
@@ -111,7 +110,6 @@ function seedHistoricalData() {
 }
 
 seedHistoricalData();
-seedDefaultStaffAccounts();
 
 // Initialize Gemini API client lazily to handle missing key gracefully
 let aiClient: GoogleGenAI | null = null;
@@ -153,7 +151,8 @@ app.get('/api/records', (req, res) => {
 });
 
 app.get('/api/auth/accounts', (req, res) => {
-  res.json(getAllStaffAccounts());
+  const accounts = getAllStaffAccounts().map(({ password, ...account }) => account);
+  res.json(accounts);
 });
 
 app.post('/api/auth/login', (req, res) => {
