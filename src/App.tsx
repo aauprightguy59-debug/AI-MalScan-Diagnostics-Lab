@@ -166,7 +166,7 @@ export default function App() {
     } catch (err) {
       console.error('AI diagnosis request failed:', err);
       alert('Clinical Diagnostic Unit error: Failed to connect to AI Classification service.');
-    } fontally {
+    } finally {
       setIsLoading(false);
     }
   };
