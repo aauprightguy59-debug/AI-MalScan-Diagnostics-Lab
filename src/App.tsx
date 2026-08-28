@@ -164,13 +164,12 @@ export default function App() {
       setReportSource(data.source);
       setCurrentReport(newRecord);
 
-    } catch (err) {
+   } catch (err) {
       console.error('AI diagnosis request failed:', err);
       alert('Clinical Diagnostic Unit error: Failed to connect to AI Classification service.');
-    } font-mono {
+    } finally {
       setIsLoading(false);
     }
-  };
 
   // 4. AUTHORIZE SIGN-OFF ON SCAN REPORT
   const handleAuthorizeRecord = async (authorizedRecord: DiagnosticRecord) => {
