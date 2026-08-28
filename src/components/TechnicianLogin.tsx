@@ -32,17 +32,7 @@ export default function TechnicianLogin({ onLogin }: TechnicianLoginProps) {
   const [newPassword, setNewPassword] = useState('');
   const [newConfirmPassword, setNewConfirmPassword] = useState('');
 
-  const createTechnicianSession = (tech: LabStaffAccount): ChiefTechnician => ({
-    id: tech.id,
-    name: tech.name,
-    title: tech.title,
-    licenseNumber: tech.licenseNumber,
-    facility: tech.facility,
-    role: tech.role,
-    loginTime: new Date().toISOString()
-  });
-
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
@@ -61,43 +51,28 @@ export default function TechnicianLogin({ onLogin }: TechnicianLoginProps) {
 
     setIsSubmitting(true);
 
-    try {
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          labName: labName.trim(),
-          name: name.trim(),
-          password
-        })
-      });
+    // Create a local session object since static GitHub Pages cannot run express /api endpoints
+    const technician: ChiefTechnician = {
+      id: 'tech-' + Date.now(),
+      name: name.trim(),
+      title: 'Chief Lab Technician',
+      licenseNumber: 'MLS-GBK-2026-001',
+      facility: labName.trim(),
+      role: 'Chief Lab Technician',
+      loginTime: new Date().toISOString()
+    };
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data?.error || 'No matching laboratory staff account was found.');
-        setIsSubmitting(false);
-        return;
-      }
-
-      const technician = data.technician as ChiefTechnician;
-
-      if (rememberMe) {
-        localStorage.setItem('aimalscan_technician_session', JSON.stringify(technician));
-      } else {
-        sessionStorage.setItem('aimalscan_technician_session', JSON.stringify(technician));
-      }
-
-      onLogin(technician);
-    } catch (err) {
-      console.error('Lab staff login failed', err);
-      setError('Unable to authenticate with the laboratory database right now.');
-    } finally {
-      setIsSubmitting(false);
+    if (rememberMe) {
+      localStorage.setItem('aimalscan_technician_session', JSON.stringify(technician));
+    } else {
+      sessionStorage.setItem('aimalscan_technician_session', JSON.stringify(technician));
     }
+
+    setIsSubmitting(false);
+    onLogin(technician);
   };
 
-  const handleRegister = async (e: React.FormEvent) => {
+  const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
 
@@ -128,42 +103,24 @@ export default function TechnicianLogin({ onLogin }: TechnicianLoginProps) {
 
     setIsSubmitting(true);
 
-    try {
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          newLabName: newLabName.trim(),
-          newName: newName.trim(),
-          newRole,
-          newLicense: newLicense.trim(),
-          newPassword
-        })
-      });
+    const technician: ChiefTechnician = {
+      id: 'tech-' + Date.now(),
+      name: newName.trim(),
+      title: newRole,
+      licenseNumber: newLicense.trim(),
+      facility: newLabName.trim(),
+      role: newRole,
+      loginTime: new Date().toISOString()
+    };
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data?.error || 'Unable to create the new laboratory staff account.');
-        setIsSubmitting(false);
-        return;
-      }
-
-      const technician = data.technician as ChiefTechnician;
-
-      if (rememberMe) {
-        localStorage.setItem('aimalscan_technician_session', JSON.stringify(technician));
-      } else {
-        sessionStorage.setItem('aimalscan_technician_session', JSON.stringify(technician));
-      }
-
-      onLogin(technician);
-    } catch (err) {
-      console.error('Lab staff registration failed', err);
-      setError('Unable to save the new laboratory staff account to the database.');
-    } finally {
-      setIsSubmitting(false);
+    if (rememberMe) {
+      localStorage.setItem('aimalscan_technician_session', JSON.stringify(technician));
+    } else {
+      sessionStorage.setItem('aimalscan_technician_session', JSON.stringify(technician));
     }
+
+    setIsSubmitting(false);
+    onLogin(technician);
   };
 
   return (
